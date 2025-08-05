@@ -1,0 +1,66 @@
+# Core Dependencies
+yt-dlp>=2023.12.30          # YouTube video downloading
+openai-whisper>=20231117    # Speech-to-text transcription
+ffmpeg-python>=0.2.0        # Video processing
+moviepy>=1.0.3              # Video editing and effects
+opencv-python>=4.8.1        # Computer vision and image processing
+Pillow>=10.1.0              # Image manipulation
+numpy>=1.24.3               # Numerical computing
+scipy>=1.11.4               # Scientific computing
+
+# AI and NLP
+transformers>=4.35.2        # Hugging Face transformers
+torch>=2.1.0                # PyTorch for AI models
+sentence-transformers>=2.2.2 # Semantic similarity
+gpt4all>=2.0.2              # Offline LLM
+spacy>=3.7.2                # Natural language processing
+
+# Web Automation
+playwright>=1.40.0          # Browser automation for TikTok/Instagram
+selenium>=4.15.2            # Alternative web automation
+beautifulsoup4>=4.12.2      # HTML parsing
+requests>=2.31.0            # HTTP requests
+
+# Platform APIs
+google-api-python-client>=2.108.0  # YouTube Data API
+google-auth-httplib2>=0.1.1         # Google authentication
+google-auth-oauthlib>=1.1.0         # OAuth for Google APIs
+instagrapi>=1.19.0                  # Instagram API wrapper
+
+# Data Processing
+pandas>=2.1.3               # Data manipulation
+pydantic>=2.5.0            # Data validation
+python-dateutil>=2.8.2     # Date/time utilities
+pytz>=2023.3               # Timezone handling
+
+# Configuration and Logging
+pyyaml>=6.0.1               # YAML configuration files
+python-dotenv>=1.0.0       # Environment variables
+loguru>=0.7.2              # Advanced logging
+colorama>=0.4.6            # Colored terminal output
+
+# File Processing
+python-magic>=0.4.27       # File type detection
+pathlib2>=2.3.7           # Enhanced path handling
+watchdog>=3.0.0           # File system monitoring
+
+# Scheduling and Background Tasks
+schedule>=1.2.0            # Job scheduling
+celery>=5.3.4              # Background task queue
+redis>=5.0.1               # In-memory data store
+
+# Performance and Caching
+diskcache>=5.6.3           # Disk-based caching
+psutil>=5.9.6              # System monitoring
+memory-profiler>=0.61.0    # Memory usage profiling
+
+# Development and Testing
+pytest>=7.4.3             # Testing framework
+black>=23.11.0             # Code formatting
+flake8>=6.1.0              # Code linting
+mypy>=1.7.1                # Type checking
+
+# Optional: Advanced Features
+face-recognition>=1.3.0    # Face detection in videos
+pytesseract>=0.3.10       # OCR for text extraction
+emoji>=2.8.0               # Emoji handling for captions

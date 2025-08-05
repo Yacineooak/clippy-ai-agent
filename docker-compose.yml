@@ -1,0 +1,55 @@
+# Docker Compose configuration for Clippy
+version: '3.8'
+
+services:
+  clippy:
+    build: .
+    container_name: clippy-agent
+    volumes:
+      - ./data:/app/data
+      - ./config.yaml:/app/config.yaml
+      - ./logs:/app/logs
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+    environment:
+      - PYTHONPATH=/app
+      - LOG_LEVEL=INFO
+      - DISPLAY=${DISPLAY}
+    restart: unless-stopped
+    
+    # Resource limits
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+          cpus: '1.0'
+        reservations:
+          memory: 512M
+          cpus: '0.5'
+
+  # Optional: Redis for caching (if implementing caching later)
+  redis:
+    image: redis:alpine
+    container_name: clippy-redis
+    volumes:
+      - redis_data:/data
+    restart: unless-stopped
+    profiles:
+      - with-redis
+
+  # Optional: PostgreSQL for analytics storage
+  postgres:
+    image: postgres:15-alpine
+    container_name: clippy-postgres
+    environment:
+      POSTGRES_DB: clippy
+      POSTGRES_USER: clippy
+      POSTGRES_PASSWORD: clippy_password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+    profiles:
+      - with-database
+
+volumes:
+  redis_data:
+  postgres_data:

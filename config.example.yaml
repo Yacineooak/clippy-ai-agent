@@ -1,0 +1,213 @@
+# Clippy Configuration
+app:
+  name: "Clippy Video Repurposing Agent"
+  version: "1.0.0"
+  debug: false
+  max_concurrent_jobs: 3
+
+# Video Processing Settings
+video:
+  download_path: "./downloads"
+  output_path: "./output"
+  temp_path: "./temp"
+  
+  # FFmpeg executable path (will be auto-configured on first run)
+  ffmpeg_path: "ffmpeg/ffmpeg-master-latest-win64-gpl/bin/ffmpeg.exe"
+  
+  # Quality settings
+  max_duration_seconds: 3600  # 1 hour max input video
+  clip_duration_min: 25       # Minimum clip length
+  clip_duration_max: 65       # Maximum clip length
+  
+  # Output formats
+  resolution: "1080x1920"     # 9:16 aspect ratio
+  fps: 30
+  bitrate: "2M"
+  audio_bitrate: "128k"
+  
+  # Supported input formats
+  supported_formats: ["mp4", "mkv", "avi", "mov", "webm"]
+
+# AI Model Settings
+ai:
+  # Transcription
+  whisper:
+    model: "base"  # tiny, base, small, medium, large
+    language: "auto"
+    
+  # Content Analysis LLM
+  llm:
+    model: "orca-mini-3b-gguf2-q4_0.gguf"
+    temperature: 0.7
+    max_tokens: 500
+    context_window: 4096
+    
+  # Highlight Detection
+  analysis:
+    min_engagement_score: 0.6
+    emotion_weights:
+      funny: 1.2
+      shocking: 1.1
+      inspirational: 1.0
+      educational: 0.9
+    
+    keywords_boost:
+      - "amazing"
+      - "incredible" 
+      - "secret"
+      - "truth"
+      - "hack"
+      - "mistake"
+
+# Platform Settings
+platforms:
+  youtube:
+    enabled: true
+    api_key: "YOUR_YOUTUBE_API_KEY_HERE"  # For read-only operations
+    credentials_file: "youtube_credentials.json"  # OAuth 2.0 credentials for uploading
+    quota_limit: 10000
+    
+    # Shorts specific settings
+    shorts:
+      max_size_mb: 256
+      categories: [22, 24]  # People & Blogs, Entertainment
+      privacy: "public"     # public, unlisted, private
+      
+  tiktok:
+    enabled: true
+    username: "your_tiktok_email@example.com"
+    password: "your_tiktok_password"
+    
+    # Automation settings
+    headless: true
+    upload_timeout: 300
+    retry_attempts: 3
+    
+  instagram:
+    enabled: true
+    username: "your_instagram_username"
+    password: "your_instagram_password"
+    
+    # Reels settings
+    max_size_mb: 100
+    aspect_ratio: "9:16"
+
+# Caption Settings
+captions:
+  enabled: true
+  style: "modern"  # modern, classic, minimal
+  
+  # Visual settings
+  font_family: "Arial Bold"
+  font_size: 48
+  stroke_width: 3
+  stroke_color: "#000000"
+  text_color: "#FFFFFF"
+  
+  # Animation
+  highlight_duration: 0.5
+  fade_in_duration: 0.3
+  fade_out_duration: 0.3
+  
+  # Positioning
+  position: "bottom"  # top, center, bottom
+  margin_bottom: 100
+  max_width: 0.8
+  
+  # Auto-styling
+  emoji_enhancement: true
+  keyword_highlighting: true
+  trending_phrases: true
+
+# Hashtag Generation
+hashtags:
+  max_count: 10
+  min_count: 5
+  
+  # Platform specific
+  youtube: ["#Shorts", "#Viral", "#Trending"]
+  tiktok: ["#fyp", "#viral", "#trending"]
+  instagram: ["#reels", "#viral", "#explore"]
+  
+  # Content based
+  auto_generate: true
+  use_trending: true
+
+# Scheduling
+scheduler:
+  enabled: true
+  timezone: "UTC"
+  
+  # Optimal posting times (24-hour format)
+  posting_times:
+    youtube: ["09:00", "14:00", "19:00"]
+    tiktok: ["06:00", "10:00", "19:00", "22:00"]
+    instagram: ["11:00", "14:00", "17:00", "20:00"]
+  
+  # Posting frequency
+  max_posts_per_day: 5
+  min_interval_hours: 2
+
+# Performance Tracking
+analytics:
+  enabled: true
+  track_metrics: ["views", "likes", "comments", "shares"]
+  optimization_interval_days: 7
+  
+  # Learning thresholds
+  viral_threshold_views: 10000
+  good_performance_likes_ratio: 0.05
+  comment_engagement_ratio: 0.02
+
+# Storage and Cleanup
+storage:
+  auto_cleanup: true
+  keep_originals_days: 7
+  keep_clips_days: 30
+  keep_logs_days: 90
+  
+  # Cache settings
+  cache_transcripts: true
+  cache_analysis: true
+  cache_duration_hours: 168  # 1 week
+
+# Security and Privacy
+security:
+  encrypt_credentials: true
+  log_sensitive_data: false
+  rate_limiting: true
+  
+  # Proxy settings (optional)
+  proxy:
+    enabled: false
+    http: ""
+    https: ""
+
+# Logging
+logging:
+  level: "INFO"  # DEBUG, INFO, WARNING, ERROR
+  file: "./logs/clippy.log"
+  max_size_mb: 50
+  backup_count: 5
+  
+  # Console output
+  console_colors: true
+  show_progress: true
+
+# Development
+development:
+  hot_reload: false
+  profile_performance: false
+  save_debug_frames: false
+
+# Cleanup Settings
+cleanup:
+  enabled: true
+  strategy: "after_successful_posts"  # always, after_successful_posts, after_all_posts
+  delete_source: true                 # Delete original downloaded video
+  delete_clips: true                  # Delete generated clips
+  delete_temp: true                   # Delete temporary files
+  
+  # Retention settings
+  keep_successful_clips_days: 0       # 0 = delete immediately, >0 = keep for X days
+  keep_failed_clips_days: 7           # Keep failed clips for debugging

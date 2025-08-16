@@ -279,8 +279,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - 📖 [Documentation](./docs/)
 - 🐛 [Issue Tracker](./issues)
 - 💬 [Discussions](./discussions)
-- 📧 Email: support@clippy-agent.com
-
+- 📧 Email: stylebenderkh@gmail.com
 ## 🙏 Acknowledgments
 
 - OpenAI Whisper for transcription
@@ -290,6 +289,6 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ---
 
-**Made with ❤️ for content creators who want to maximize their reach across platforms**
+**Made with ❤️ by Yacine Khaldi for content creators who want to maximize their reach across platforms**
 
 Contributions welcome! Please read CONTRIBUTING.md for guidelines.
